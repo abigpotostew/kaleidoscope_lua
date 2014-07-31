@@ -22,8 +22,9 @@ function setup()
     of.setWindowTitle("kaleido")
     
     of.setFrameRate(30) -- if vertical sync is off, we can go a bit fast... this caps the framerate at 60fps
-   local path = "PATH FROM YOUR DATA FOLDER TO THIS SCRIPT"  
-   kaleidoscope_img:loadImage( path..
+   
+   local path_from_datadir_to_this = "kaleidoscope_lua"  
+   kaleidoscope_img:loadImage( path_from_datadir_to_this..
                     --"opal.jpg"
                     --"ballet.jpg"
                     --"ballet2.jpg"
@@ -37,11 +38,11 @@ function setup()
     
    --Load correct shader
     if target == of.TARGET.RASPBERRYPI then
-      shader:load(path..'es2/kaleidoscope')
+      shader:load(path_from_datadir_to_this..'es2/kaleidoscope')
     elseif of.isGLProgrammableRenderer() then
-        shader:load(path..'gl3/kaleidoscope')
+        shader:load(path_from_datadir_to_this..'gl3/kaleidoscope')
     else
-      shader:load(path..'gl2/kaleidoscope')
+      shader:load(path_from_datadir_to_this..'gl2/kaleidoscope')
    end
     
     shader:setUniform2f('resolution', width, height)
